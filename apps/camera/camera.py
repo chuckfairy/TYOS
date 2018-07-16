@@ -8,6 +8,7 @@
 from subprocess import Popen
 import sys
 import pygame
+from constant import *
 
 class Run():
     def __init__(self, fona):
@@ -18,10 +19,10 @@ class Run():
         self.next_app = None
 
     def run_app(self):
-        cam = Popen(['sudo', 'python', '/home/pi/tyos/apps/camera/app.py'])
+        cam = Popen(['sudo', 'python', APP_PATH + 'camera/app.py'])
         pygame.quit()
         sys.exit()
-        
+
     def get_events(self, event):
         pass
 

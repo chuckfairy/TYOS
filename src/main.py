@@ -20,6 +20,8 @@ import pygame, sys, os, time, datetime, traceback, warnings
 from pygame.locals import *
 import framebuffer, toolbar, apps, serialport, receive
 
+from constant import *
+
 class tyos():
     def __init__(self):
         warnings.filterwarnings("ignore")
@@ -56,7 +58,7 @@ class tyos():
         #Setup surface
         self.WINDOWWIDTH = 320
         self.WINDOWHIEGHT = 480
-        self.surface = pygame.display.set_mode((self.WINDOWWIDTH, self.WINDOWHIEGHT), pygame.FULLSCREEN)
+        self.surface = pygame.display.set_mode((450, 450), 0, 32)
         pygame.mouse.set_visible(False)
 
         self.clock = pygame.time.Clock()
@@ -71,19 +73,19 @@ class tyos():
         self.update = True
 
         #Setup logo
-        self.logo = pygame.image.load('/home/pi/tyos/graphics/logo.png')
+        self.logo = pygame.image.load(ROOT_DIR + 'graphics/logo.png')
         self.logo_rect = self.logo.get_rect()
         self.logo_rect.y = self.surface.get_rect().centery - 50
         self.logo_rect.centerx = self.surface.get_rect().centerx
 
         #Setup Battery Icon
-        self.bat = pygame.image.load('/home/pi/tyos/graphics/bat.png')
+        self.bat = pygame.image.load(ROOT_DIR + 'graphics/bat.png')
         self.bat_rect = self.bat.get_rect()
         self.bat_rect.centery = 15
         self.bat_rect.right = self.WINDOWWIDTH - 10
 
         #Setup Low Battery Icon
-        self.low_bat = pygame.image.load('/home/pi/tyos/graphics/low_bat.png')
+        self.low_bat = pygame.image.load(ROOT_DIR + 'graphics/low_bat.png')
         self.low_bat_rect = self.low_bat.get_rect()
         self.low_bat_rect.centery = 380
         self.low_bat_rect.centerx = self.surface.get_rect().centerx
@@ -99,7 +101,7 @@ class tyos():
         self.bat_left = {'surface':self.toolbar.bat_left, 'rects':self.toolbar.bat_left_rect}
 
         #Setup fonts
-        self.font = pygame.font.Font('/home/pi/tyos/fonts/arial.ttf', 20)
+        self.font = pygame.font.Font(ROOT_DIR + 'fonts/arial.ttf', 20)
 
         #Setup clock Text
         self.clock_text = self.font.render('12:00', True, self.WHITE, self.BLACK)
